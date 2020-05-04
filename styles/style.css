@@ -1,0 +1,14 @@
+body{
+   font-family: Helvetica; 
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+  
+.flex-container > div {
+    background-color: #796d6d;
+    width: auto;
+
+  }
