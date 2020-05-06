@@ -10,7 +10,8 @@ canvasContext.lineWidth = 50; //change to user selection
 let isDrawing =  false; //check if mouse is pressed down
 let lastX = 0;
 let lastY = 0;
-let hue = 0; //change to user selection
+let hue = var(--pickedColour); //change to user selection
+document.documentElement.style.setProperty("--pickedColour", colour);
 
 function draw(e){
 	if(!isDrawing){
