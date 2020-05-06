@@ -9,15 +9,36 @@
 </head>
 <body>
 
-    <div class="flex-wrapper">
-    <div>
+    <div class="column">
 
-    </div>
+        <div class="row">
 
+            <canvas id="drawspace" width="800" height="800" ></canvas>
+                        
+        </div>
+
+        <div class="row">
+            
+            <label for="pickedColour">Colour:</label>
+            <input type="color" name="pickedColour" value="#900C3F" />
+                
+            <label for="pointerSize">Line Thickness:</label>
+            <input type="range" name="pointerSize" min="1" max="100" value="25" />
     
-    
+            <!-- add drawing to list-->
+            <label for="save"></label>
+            <input type="submit" value="Save drawing" />
 
+        </div>
 
+        <div class="row">
+            <ul>
+                <li></li>
+            </ul>
+            
+
+        </div>
+ 
     </div>
     <script src="scripts/draw.js"></script>
     <script src="scripts/storage.js"></script>
