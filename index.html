@@ -24,19 +24,21 @@
                 
             <label for="pointerSize">Line Thickness:</label>
             <input type="range" name="pointerSize" min="1" max="100" value="25" />
-    
-            <!-- add drawing to list-->
-            <label for="save"></label>
-            <input type="submit" value="Save drawing" />
 
         </div>
 
         <div class="row">
-            <ul>
-                <li></li>
+            <ul class="drawning-list">
+                <li>Loading...</li>
             </ul>
-            
+    
+            <form class="add-drawing">
+                <input type="submit" value="Save drawing" />
+            </form>
 
+            <form class="clear-drawing">
+                <input type="submit" value="Clear" />
+            </form>
         </div>
  
     </div>
