@@ -1,17 +1,22 @@
 const canvas = document.querySelector("#drawspace");
 const canvasContext = canvas.getContext("2d");
-canvas.width = innerWidth;
-canvas.height = "250";
-canvasContext.strokeStyle = "BADA55";
-canvasContext.lineJoin = "round";
-canvasContext.lineCap = "round";
-canvasContext.lineWidth = 50; //change to user selection
+let colour = document.getElementsByName("colour");
 
-let isDrawing =  false; //check if mouse is pressed down
+console.log(colour);
+
+canvas.width = window.innerWidth;
+canvas.height = "550";
+canvasContext.strokeStyle = "red"; //stroke colour
+canvasContext.lineJoin = "round"; //end of the line
+canvasContext.lineCap = "round"; 
+canvasContext.lineWidth = 25; //change to user selection
+
+let isDrawing =  false; 
 let lastX = 0;
 let lastY = 0;
-let hue = var(--pickedColour); //change to user selection
-document.documentElement.style.setProperty("--pickedColour", colour);
+let hue = 0; //change to user selection
+let direction = true;
+
 
 function draw(e){
 	if(!isDrawing){
@@ -26,15 +31,27 @@ function draw(e){
 	lastX = e.offsetX;
 	lastY = e.offsetY;
 	[lastX, lastY] = [e.offsetX, e.offsetY];
-	//hue++;
+	hue++;
 
-	//check if user selected a colour, 
-
+	if(hue >= 360){
+		hue = 0;
+	}
+	if(canvasContext.lineWidth >= 100 || canvasContext.lineWidth <= 1){
+		direction = !direction;
+	} 
+    
+	if(direction){
+		canvasContext.lineWidth++; 
+	} else {
+		canvasContext.lineWidth--;
+	}
   
   
 } 
 
-
+canvas.addEventListener("input", () => {
+	canvasContext.strokeStyle = colour.value;
+}, false);
 canvas.addEventListener("mousedown", (e) => {
 	isDrawing = true;
 	[lastX, lastY] = [e.offsetX, e.offsetY];
