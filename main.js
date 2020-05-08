@@ -3,41 +3,12 @@ const canvasContext = canvas.getContext("2d");
 const clearDrawing = document.querySelector(".clear-drawing");
 const addDrawing = document.querySelector(".add-drawing");
 const drawingList = document.querySelector(".drawning-list");
-const drawingName = document.querySelector("[name=drawingName").value;
-//const drawings = JSON.parse(localStorage.getItem("drawings")) || [];
-const storageLabel = "drawingLabel";
-let canvasDrawingPoints = JSON.parse(localStorage.getItem(drawingName)) || [];
-
 let colourInput = document.getElementById("colour");
 let lineThickness = document.getElementById("lineThickness");
 
-//const drawings = JSON.parse(localStorage.getItem(""));
-
-function saveDrawings(drawingName, canvasDrawingPoints){
-	//e.preventDefault(); 
-	
-    
-	const drawing = {
-		text: canvasDrawingPoints,
-	};
-    
-	drawings.push(drawing);
-	PopulateDrawingList(drawings, drawingList);
-	localStorage.setItem(drawingName, JSON.stringify(drawings));
-	this.reset();
-}
-function MapDrawingstoHTML(drawnItem){
-	return `
-            <li>
-                <label for="">${drawnItem.text}</label>
-            </li>
-        `;
-}
-
-function PopulateDrawingList(listDrawings = [], drawingList){
-	drawingList.innerHTML = listDrawings.map(MapDrawingstoHTML).join("");
-}
-
+const drawingLabel = "drawingLabel";
+const drawings = JSON.parse(localStorage.getItem("drawings")) || [];
+const canvasDrawingPoints = [];
 
 canvas.width = window.innerWidth;
 canvas.height = "550";
@@ -48,8 +19,6 @@ let isDrawing =  false;
 let lastX = 0;
 let lastY = 0;
 let mouseX, mouseY;
-
-
 
 function draw(e){
 	if(!isDrawing){
@@ -73,6 +42,34 @@ function draw(e){
 		line: canvasContext.strokeStyle,
 		colour: canvasContext.lineWidth,
 	});
+	localStorage.setItem(drawingLabel, JSON.stringify(canvasDrawingPoints));
+}
+
+function saveDrawings(e){
+	e.preventDefault(); 
+	const drawingName = (this.querySelector("[name=drawingName")).value;
+    
+	const drawing = {
+		text: drawingName,
+	};
+    
+	drawings.push(drawing);
+	PopulateDrawingList(drawings, drawingList);
+	localStorage.setItem(drawingName, JSON.stringify(drawings));
+	
+	this.reset();
+}
+
+function MapDrawingstoHTML(drawnItem){
+	return `
+            <li>
+                <label for="">${drawnItem.text}</label>
+            </li>
+        `;
+}
+
+function PopulateDrawingList(listDrawings = [], drawingList){
+	drawingList.innerHTML = listDrawings.map(MapDrawingstoHTML).join("");
 }
 
 function clearCanvas(){
@@ -93,4 +90,3 @@ canvas.addEventListener("mouseout", () => isDrawing = false);
 addDrawing.addEventListener("submit", saveDrawings);
 
 PopulateDrawingList(drawings, drawingList);
-//PopulateDrawingList(drawingList, getStoredDrawingAt(storageLabel));

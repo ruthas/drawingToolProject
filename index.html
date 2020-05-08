@@ -10,14 +10,16 @@
 	<body>
 		<div class="column">
 			<div class="row">
-				<canvas id="drawspace" width="800" height="800"></canvas>
+				<canvas id="drawspace" width="800" height="800" style="border: 3px solid #000000;"></canvas>
 			</div>
 
 			<div class="row">
 				<div class="controls">
 					<label for="colour">Colour:</label>
 					<input type="color" id="colour" name="colour" value="#7f3c99" />
+				</div>
 
+				<div class="controls">
 					<label for="lineThickness">Line Thickness:</label>
 					<input
 						type="range"
@@ -29,6 +31,7 @@
 					/>
 				</div>
 			</div>
+			
 
 			<div class="row">
 				<ul class="drawning-list">
