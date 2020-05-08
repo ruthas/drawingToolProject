@@ -10,20 +10,24 @@
 	<body>
 		<div class="column">
 			<div class="row">
-				<canvas
-					id="drawspace"
-					width="800"
-					height="800"
-					style="border: 1px solid #000000;"
-				></canvas>
+				<canvas id="drawspace" width="800" height="800"></canvas>
 			</div>
 
 			<div class="row">
-				<label for="colour">Colour:</label>
-				<input type="color" name="colour" value="#FCC" />
+				<div class="controls">
+					<label for="colour">Colour:</label>
+					<input type="color" id="colour" name="colour" value="#7f3c99" />
 
-				<label for="lineThickness">Line Thickness:</label>
-				<input type="range" name="lineThickness" min="1" max="100" value="25" />
+					<label for="lineThickness">Line Thickness:</label>
+					<input
+						type="range"
+						id="lineThickness"
+						name="lineThickness"
+						min="1"
+						max="100"
+						value="25"
+					/>
+				</div>
 			</div>
 
 			<div class="row">

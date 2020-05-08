@@ -3,13 +3,7 @@ body {
 	text-align: center;
 	font-size: 45px;
 	text-align: center;
-	background: #193549;
 	font-weight: 100;
-}
-
-:root {
-	--pickedColour: #7f3c99;
-	--pointerSize: 25;
 }
 
 .row {
@@ -30,4 +24,8 @@ body {
 	flex: 1;
 	background: aquamarine;
 	margin: 15px;
+}
+
+#canvas {
+	border: 1px solid #000000;
 }
